@@ -4,7 +4,9 @@
 
 
 ## Arquitetura
-  - Padrão Rest
+  - Arquitetura Rest
+  - Padrão DTO
+  - Padrão Repository
 
 
 ## Contribuidores
