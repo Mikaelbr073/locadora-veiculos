@@ -1,8 +1,8 @@
-package br.edu.ifpe.locadora.locadora.dto;
+package br.edu.ifpe.locadora.locadora.form;
 
 import br.edu.ifpe.locadora.locadora.entity.Carro;
 
-public class CarroFormDTO {
+public class CarroForm {
 
 	public Carro converter() {
 		return null;
