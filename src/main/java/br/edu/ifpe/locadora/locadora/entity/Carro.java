@@ -1,19 +1,27 @@
 package br.edu.ifpe.locadora.locadora.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+import lombok.Getter;
+
 @Entity
-public class Carro {
+@Data
+public class Carro {	
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
-
-	public Carro() {
-
-	}
-
-	public int getId() {
-		return id;
-	}
+	@Column(unique = true)
+	private String placa;
+	private String modelo;
+	private String marca;
+	private String cor;
+	private String ano;
+	private String disponivel;
 	
 }
