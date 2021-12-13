@@ -48,13 +48,13 @@ public class ClienteController {
 		Cliente novoCliente = form.converter();
 		clienteRepository.save(novoCliente);
 
-		URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(novoCliente.getId()).toUri();
+		URI uri = uriBuilder.path("/locadora/cliente/{id}").buildAndExpand(novoCliente.getId()).toUri();
 		return ResponseEntity.created(uri).body(new ClienteDTO(novoCliente));
 
 	}
 	
 	
-	@GetMapping("/locadora/cliente/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<ClienteDTO> detalhar(@PathVariable long id) {
 		Optional<Cliente> optionalCliente = clienteRepository.findById(id);
 		if (optionalCliente.isPresent()) {
@@ -66,7 +66,7 @@ public class ClienteController {
 
 	}
 	
-	@DeleteMapping("/locadora/cliente/{id}")
+	@DeleteMapping("/{id}")
 	@CacheEvict(value = "listaDClientes")
 	public ResponseEntity<?> deletar(@PathVariable long id) {
 		Optional<Cliente> optionalCliente = clienteRepository.findById(id);

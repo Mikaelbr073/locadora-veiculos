@@ -36,7 +36,7 @@ public class CarrosController {
 	private CarroRepository carroRepository;
 
 	@GetMapping("/locadora/carros")
-	@Cacheable(value = "listaDCarros")
+	@Cacheable(value = "listaDeCarros")
 	public List<CarroDTO> listarTodos() {
 		List<Carro> listaTodos = carroRepository.findAll();
 		System.out.println(listaTodos.toString());
@@ -44,7 +44,7 @@ public class CarrosController {
 	}
 
 	@PostMapping("/locadora/carros")
-	@CacheEvict(value = "listaDCarros")
+	@CacheEvict(value = "listaDeCarros", allEntries = true)
 	public ResponseEntity<CarroDTO> cadastrar(@RequestBody @Valid CarroForm form, UriComponentsBuilder uriBuilder) {
 
 		System.out.println(form.toString());
@@ -69,7 +69,7 @@ public class CarrosController {
 
 
 	@DeleteMapping("/locadora/carros/{id}")
-	@CacheEvict(value = "listaDCarros")
+	@CacheEvict(value = "listaDeCarros", allEntries = true)
 	public ResponseEntity<?> deletar(@PathVariable long id) {
 		Optional<Carro> optionalCarro = carroRepository.findById(id);
 		if (optionalCarro.isPresent()) {
@@ -80,6 +80,7 @@ public class CarrosController {
 	}
 
 	@PatchMapping("/locadora/carros/{id}")
+	@CacheEvict(value = "listaDeCarros", allEntries = true)
 	public ResponseEntity<CarroDTO> atualizar(@PathVariable long id, @RequestBody @Valid AtualizacaoCarroForm form, UriComponentsBuilder uriBuilder) {
 		Carro carro = form.converter(id, carroRepository);
 		
