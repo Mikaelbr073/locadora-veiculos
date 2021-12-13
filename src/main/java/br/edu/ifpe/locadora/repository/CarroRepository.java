@@ -1,8 +1,8 @@
-package br.edu.ifpe.locadora.locadora.repository;
+package br.edu.ifpe.locadora.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.edu.ifpe.locadora.locadora.entity.Carro;
+import br.edu.ifpe.locadora.entity.Carro;
 
 /**
  * @author JJunio

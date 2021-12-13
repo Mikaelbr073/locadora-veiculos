@@ -1,9 +1,7 @@
-package br.edu.ifpe.locadora.locadora.form;
+package br.edu.ifpe.locadora.form;
 
-import com.sun.istack.NotNull;
-
-import br.edu.ifpe.locadora.locadora.entity.Carro;
-import br.edu.ifpe.locadora.locadora.repository.CarroRepository;
+import br.edu.ifpe.locadora.entity.Carro;
+import br.edu.ifpe.locadora.repository.CarroRepository;
 
 /**
  * @author JJunio
@@ -20,7 +18,7 @@ public class AtualizacaoCarroForm {
 
 		carro.setAno(this.ano);
 		carro.setCor(this.cor);
-		carro.isDisponvel(this.disponivel);
+		carro.setDisponivel(this.disponivel);
 
 		return carro;
 	}

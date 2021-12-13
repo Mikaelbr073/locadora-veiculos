@@ -1,6 +1,4 @@
-package br.edu.ifpe.locadora.locadora.form;
-
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+package br.edu.ifpe.locadora.form;
 
 /**
  * @author JJunio
@@ -26,10 +24,6 @@ public class LoginForm {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public UsernamePasswordAuthenticationToken converter() {
-		return new UsernamePasswordAuthenticationToken(this.email, this.senha);
 	}
 
 }
