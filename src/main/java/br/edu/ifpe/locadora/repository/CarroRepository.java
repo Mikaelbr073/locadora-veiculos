@@ -1,6 +1,7 @@
 package br.edu.ifpe.locadora.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,6 +15,6 @@ public interface CarroRepository extends JpaRepository<Carro, Long>{
 
 	List<Carro> findByMarca(String marca);
 
-	Carro findByPlaca(String placa);
+	Optional<Carro> findByPlaca(String placa);
 
 }

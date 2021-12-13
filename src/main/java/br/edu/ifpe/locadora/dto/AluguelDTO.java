@@ -1,6 +1,8 @@
 package br.edu.ifpe.locadora.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.edu.ifpe.locadora.entity.Aluguel;
 import br.edu.ifpe.locadora.entity.Carro;
@@ -31,6 +33,20 @@ public class AluguelDTO {
 		this.valor = aluguel.getValor();
 		this.dataEmprestimo = aluguel.getRetirada();
 		this.dataDevolucao = aluguel.getDevolucao();
+	}
+
+	public AluguelDTO(Aluguel aluguel) {
+		this.nomeCliente = aluguel.getCliente().getNome();
+		this.modeloCarro = aluguel.getCarro().getModelo();
+		this.valor = aluguel.getValor();
+	}
+
+	public static List<AluguelDTO> converterListaAlugueleDTO(List<Aluguel> listaTodos) {
+		List<AluguelDTO> listaAluguelDTO = new ArrayList<>();
+		for (Aluguel aluguel : listaTodos) {
+			listaAluguelDTO.add(new AluguelDTO(aluguel));
+		}
+		return listaAluguelDTO;
 	}
 
 }

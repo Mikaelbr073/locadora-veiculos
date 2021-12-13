@@ -22,6 +22,8 @@ public class Aluguel {
 	private Date retirada;
 	private Date devolucao;
 	private double valor;
+	@OneToOne
+	private Cliente cliente;
 
 	public void calculaValor() {
 		if (this.getCarro().getCor().toLowerCase() == "PRETA" || this.getCarro().getCor().toLowerCase() == "PRETA") {

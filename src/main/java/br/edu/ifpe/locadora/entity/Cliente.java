@@ -18,8 +18,6 @@ public class Cliente {
 	private String nome;
 	@Column(unique = true)
 	private String cnh;
-	@OneToOne
-	private Aluguel alugado;
 	
 	public Cliente( ) {}
 	

@@ -19,6 +19,7 @@ public class CarroDTO {
 	private String cor;
 	private String ano;
 	private boolean disponivel;
+	private String placa;
 
 	public CarroDTO(Carro carro) {
 		this.id = carro.getId();
@@ -27,6 +28,7 @@ public class CarroDTO {
 		this.cor = carro.getCor();
 		this.modelo = carro.getModelo();
 		this.disponivel = carro.isDisponivel();
+		this.placa = carro.getPlaca();
 	}
 
 	public static List<CarroDTO> converterListaCarroDTO(List<Carro> carros) {

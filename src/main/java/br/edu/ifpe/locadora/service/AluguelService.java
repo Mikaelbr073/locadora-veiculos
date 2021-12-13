@@ -2,10 +2,7 @@ package br.edu.ifpe.locadora.service;
 
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
 
 import br.edu.ifpe.locadora.controller.ClienteFormAluguel;
 import br.edu.ifpe.locadora.entity.Aluguel;
@@ -13,28 +10,22 @@ import br.edu.ifpe.locadora.entity.Carro;
 import br.edu.ifpe.locadora.entity.Cliente;
 import br.edu.ifpe.locadora.repository.CarroRepository;
 import br.edu.ifpe.locadora.repository.ClienteRepository;
-import lombok.Data;
 
 /**
  * @author JJunio
  *
  */
-@Data
+
 public class AluguelService {
 
-	@Autowired
-	private CarroRepository carroRepository;
-
-	@Autowired
-	private ClienteRepository clienteRepository;
-
-	public Aluguel alugar(@Valid ClienteFormAluguel form) {
+	public static Aluguel alugar(ClienteFormAluguel form, CarroRepository carroRepository,
+			ClienteRepository clienteRepository) {
 
 		Aluguel alugado = new Aluguel();
 
-		Carro carro = carroRepository.findByPlaca(form.getPlaca());
+		Optional<Carro> carro = carroRepository.findByPlaca(form.getPlaca());
 
-		//Cliente cliente = clienteRepository.findByNome(form.getNome());
+		Optional<Cliente> cliente = clienteRepository.findByNome(form.getNome());
 
 		Date dataRetirada = new Date();
 
@@ -42,15 +33,18 @@ public class AluguelService {
 		cal.add(Calendar.DATE, 1);
 		Date dataDevolucao = cal.getTime();
 
-		carro.setDisponivel(false);
+		if (carro.isPresent() && cliente.isPresent()) {
+			carro.get().setDisponivel(false);
+			alugado.setCarro(carro.get());
+			alugado.setRetirada(dataRetirada);
+			alugado.setDevolucao(dataDevolucao);
+			alugado.calculaValor();
+			alugado.setCliente(cliente.get());
+			;
 
-		alugado.setCarro(carro);
-		alugado.setRetirada(dataRetirada);
-		alugado.setDevolucao(dataDevolucao);
-		alugado.calculaValor();
-		//cliente.setAlugado(alugado);
+			return alugado;
+		}
+		return null;
 
-		return alugado;
 	}
-
 }
