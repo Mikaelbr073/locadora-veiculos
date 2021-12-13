@@ -1,4 +1,5 @@
 package br.edu.ifpe.locadora.entity;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 public class Aluguel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -21,6 +22,13 @@ public class Aluguel {
 	private Date retirada;
 	private Date devolucao;
 	private double valor;
-	
-	
+
+	public void calculaValor() {
+		if (this.getCarro().getCor().toLowerCase() == "PRETA" || this.getCarro().getCor().toLowerCase() == "PRETA") {
+			this.valor = 200;
+		} else {
+			this.valor = 150;
+		}
+
+	}
 }
