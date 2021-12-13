@@ -1,9 +1,11 @@
 package br.edu.ifpe.locadora.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,6 @@ public class Cliente {
 	private String nome;
 	@Column(unique = true)
 	private String cnh;
-	@OneToMany
-	private List<Aluguel> Aluguel;
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Aluguel> alugueis = new ArrayList<>();
 }
