@@ -14,14 +14,14 @@ import lombok.Data;
 public class Carro {	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	@Column(unique = true)
 	private String placa;
 	private String modelo;
 	private String marca;
 	private String cor;
 	private String ano;
-	private String disponivel;
+	private boolean disponivel;
 	
 }
