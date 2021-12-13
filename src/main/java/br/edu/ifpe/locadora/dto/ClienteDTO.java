@@ -11,12 +11,14 @@ public class ClienteDTO {
 	private long id;
 	private String nome;
 	private String cnh;
-	private List<Aluguel> alugueis = new ArrayList<>();
+	private Aluguel aluguel;
 	
 	public ClienteDTO(Cliente cliente) {
 		this.id = cliente.getId();
 		this.nome = cliente.getNome();
-		this.cnh = cliente.getCnh();		
+		this.cnh = cliente.getCnh();
+		this.aluguel = cliente.getAlugado();
+		
 	}
 	
 	

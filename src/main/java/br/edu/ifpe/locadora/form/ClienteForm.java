@@ -11,6 +11,7 @@ public class ClienteForm {
 	
 	@NotNull @NotEmpty
 	private String nome;
+	@NotNull @NotEmpty
 	private String cnh;
 	
 	
