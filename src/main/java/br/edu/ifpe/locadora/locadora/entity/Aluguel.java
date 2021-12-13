@@ -1,6 +1,7 @@
 package br.edu.ifpe.locadora.locadora.entity;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,20 +9,17 @@ import javax.persistence.Id;
 
 import lombok.Data;
 
-
-@Entity
 @Data
-public class Carro {	
+@Entity
+public class Aluguel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(unique = true)
-	private String placa;
-	private String modelo;
-	private String marca;
-	private String cor;
-	private String ano;
-	private boolean disponivel;
+	private Carro carro;
+	private Date retirada;
+	private Date devolucao;
+	private double valor;
+	
 	
 }
