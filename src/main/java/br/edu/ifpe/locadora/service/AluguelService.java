@@ -34,7 +34,7 @@ public class AluguelService {
 
 		Carro carro = carroRepository.findByPlaca(form.getPlaca());
 
-		Cliente cliente = clienteRepository.findByNome(form.getNome());
+		//Cliente cliente = clienteRepository.findByNome(form.getNome());
 
 		Date dataRetirada = new Date();
 
@@ -48,7 +48,7 @@ public class AluguelService {
 		alugado.setRetirada(dataRetirada);
 		alugado.setDevolucao(dataDevolucao);
 		alugado.calculaValor();
-		cliente.setAlugado(alugado);
+		//cliente.setAlugado(alugado);
 
 		return alugado;
 	}
