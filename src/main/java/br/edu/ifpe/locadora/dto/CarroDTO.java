@@ -25,6 +25,7 @@ public class CarroDTO {
 		this.ano = carro.getAno();
 		this.marca = carro.getMarca();
 		this.cor = carro.getCor();
+		this.modelo = carro.getModelo();
 		this.disponivel = carro.isDisponivel();
 	}
 

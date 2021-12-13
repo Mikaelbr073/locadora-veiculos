@@ -23,4 +23,12 @@ public class AtualizacaoCarroForm {
 		return carro;
 	}
 
+	public Carro converter(long id, CarroRepository carroRepository) {
+		Carro carroBD = carroRepository.getById(id);
+		carroBD.setAno(ano);
+		carroBD.setCor(cor);
+		carroBD.setDisponivel(disponivel);
+		return carroBD;
+	}
+
 }
