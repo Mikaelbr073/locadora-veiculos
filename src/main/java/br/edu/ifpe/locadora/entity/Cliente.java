@@ -21,4 +21,17 @@ public class Cliente {
 	@OneToOne
 	private Aluguel alugado;
 	
+	public Cliente( ) {}
+	
+	public Cliente(String nome, String cnh) {
+		super();
+		this.nome = nome;
+		this.cnh = cnh;
+	}
+	
+	
+	
+	
+	
+	
 }
