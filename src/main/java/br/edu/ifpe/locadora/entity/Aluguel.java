@@ -1,5 +1,4 @@
-package br.edu.ifpe.locadora.locadora.entity;
-
+package br.edu.ifpe.locadora.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
