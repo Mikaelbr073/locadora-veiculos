@@ -2,12 +2,12 @@ package br.edu.ifpe.locadora.locadora.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
+import javax.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
@@ -21,7 +21,7 @@ public class Aluguel {
 	private Date retirada;
 	private Date devolucao;
 	private double valor;
-	@OneToOne
+	@ManyToOne
 	private Cliente cliente;
 	
 }
