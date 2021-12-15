@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -44,6 +45,7 @@ public class CarrosController {
 	}
 
 	@PostMapping("/locadora/carros")
+	@Transactional
 	@CacheEvict(value = "listaDeCarros", allEntries = true)
 	public ResponseEntity<CarroDTO> cadastrar(@RequestBody @Valid CarroForm form, UriComponentsBuilder uriBuilder) {
 
@@ -69,6 +71,7 @@ public class CarrosController {
 
 
 	@DeleteMapping("/locadora/carros/{id}")
+	@Transactional
 	@CacheEvict(value = "listaDeCarros", allEntries = true)
 	public ResponseEntity<?> deletar(@PathVariable long id) {
 		Optional<Carro> optionalCarro = carroRepository.findById(id);
@@ -80,10 +83,10 @@ public class CarrosController {
 	}
 
 	@PatchMapping("/locadora/carros/{id}")
+	@Transactional
 	@CacheEvict(value = "listaDeCarros", allEntries = true)
-	public ResponseEntity<CarroDTO> atualizar(@PathVariable long id, @RequestBody @Valid AtualizacaoCarroForm form, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<CarroDTO> atualizar(@RequestBody @Valid AtualizacaoCarroForm form, @PathVariable long id, UriComponentsBuilder uriBuilder) {
 		Carro carro = form.converter(id, carroRepository);
-		System.out.println(carro);
 		
 		return ResponseEntity.ok(new CarroDTO(carro));
 	}

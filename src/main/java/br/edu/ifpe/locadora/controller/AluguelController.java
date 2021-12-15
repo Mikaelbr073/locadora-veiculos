@@ -75,6 +75,7 @@ public class AluguelController {
 	}
 
 	@DeleteMapping("/locadora/aluguel/{id}")
+	@Transactional
 	public ResponseEntity<?> deletar(@PathVariable long id) {
 		Optional<Aluguel> optionalAluguel = aluguelRepository.findById(id);
 		if (optionalAluguel.isPresent()) {
