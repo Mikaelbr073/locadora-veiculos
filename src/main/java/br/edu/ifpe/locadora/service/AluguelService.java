@@ -4,10 +4,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
 
-import br.edu.ifpe.locadora.controller.ClienteFormAluguel;
 import br.edu.ifpe.locadora.entity.Aluguel;
 import br.edu.ifpe.locadora.entity.Carro;
 import br.edu.ifpe.locadora.entity.Cliente;
+import br.edu.ifpe.locadora.form.ClienteFormAluguel;
 import br.edu.ifpe.locadora.repository.CarroRepository;
 import br.edu.ifpe.locadora.repository.ClienteRepository;
 
@@ -33,7 +33,7 @@ public class AluguelService {
 		cal.add(Calendar.DATE, 1);
 		Date dataDevolucao = cal.getTime();
 
-		if (carro.isPresent() && cliente.isPresent()) {
+		if (carro.isPresent() && cliente.isPresent() && carro.get().isDisponivel()) {
 			carro.get().setDisponivel(false);
 			alugado.setCarro(carro.get());
 			alugado.setRetirada(dataRetirada);

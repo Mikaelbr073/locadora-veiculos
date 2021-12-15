@@ -83,6 +83,7 @@ public class CarrosController {
 	@CacheEvict(value = "listaDeCarros", allEntries = true)
 	public ResponseEntity<CarroDTO> atualizar(@PathVariable long id, @RequestBody @Valid AtualizacaoCarroForm form, UriComponentsBuilder uriBuilder) {
 		Carro carro = form.converter(id, carroRepository);
+		System.out.println(carro);
 		
 		return ResponseEntity.ok(new CarroDTO(carro));
 	}

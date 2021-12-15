@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.edu.ifpe.locadora.dto.AluguelDTO;
-import br.edu.ifpe.locadora.dto.ClienteDTO;
 import br.edu.ifpe.locadora.entity.Aluguel;
-import br.edu.ifpe.locadora.entity.Cliente;
+import br.edu.ifpe.locadora.entity.Carro;
+import br.edu.ifpe.locadora.form.ClienteFormAluguel;
 import br.edu.ifpe.locadora.repository.AluguelRepository;
 import br.edu.ifpe.locadora.repository.CarroRepository;
 import br.edu.ifpe.locadora.repository.ClienteRepository;
@@ -76,8 +76,10 @@ public class AluguelController {
 
 	@DeleteMapping("/locadora/aluguel/{id}")
 	public ResponseEntity<?> deletar(@PathVariable long id) {
-		Optional<Aluguel> optionalCliente = aluguelRepository.findById(id);
-		if (optionalCliente.isPresent()) {
+		Optional<Aluguel> optionalAluguel = aluguelRepository.findById(id);
+		if (optionalAluguel.isPresent()) {
+			Carro carro = optionalAluguel.get().getCarro();
+			carro.setDisponivel(true);
 			aluguelRepository.deleteById(id);
 			return ResponseEntity.ok().build();
 		}

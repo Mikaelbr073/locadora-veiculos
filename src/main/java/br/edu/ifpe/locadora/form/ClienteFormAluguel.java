@@ -1,4 +1,4 @@
-package br.edu.ifpe.locadora.controller;
+package br.edu.ifpe.locadora.form;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
